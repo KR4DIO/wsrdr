@@ -77,6 +77,8 @@ int dopen(char* filename) {
 
 //! Read a block of the file into the specified buffer.
 //
+// **JW01** changed 2nd parameter from int to long
+//
 int dread(char* buffer, long location, int size) {
     switch(handle) {
         case NONE:
