@@ -1,0 +1,51 @@
+DATES
+
+All dates are UTC, i.e. YYYY-MM-DD HH:MM (just happens to be the form used by
+sqlite3, which I use to store the data).
+
+
+RECORD RANGE
+
+Record ranges are specified using decimal numbers from 0 to 4080 that follow the
+general patter start:end. The allowable variances are (using s and e to
+represent start and end):
+
+    s       - a single record number
+    s:      - all records starting at s
+    :e      - all records between 0 and e
+
+
+MEMORY LOCATION RANGES
+
+These are specified in the same way as record ranges except the numbers used
+are be hexidecimal.
+
+
+PRINT SPECIFICATION
+
+Output of weatherstation records (not the header) can be formatted using the
+-p switch and providing a string argument containing the field order. The
+string is made up of one or more of:
+
+    a.... the device memory address (in hex)
+    h.... humidity outside
+    H.... humidity inside
+    t.... temperature outside
+    T.... temperature inside
+    r.... rain meter reading
+    R.... rain meter difference from previous
+    p.... pressure
+    w.... wind speed
+    g.... gust speed
+    d.... wind direction
+    i.... record interval (time since previous save in mins)
+    u.... date/time of the data as utc
+    U.... as u but with the value enclosed in ''s
+
+e.g.
+    $ ./wsrdr -r 1:20 -p "uhtpwd"
+
+lists the date/time, humidity outside, temp outside, pressure, wind speed and
+direction. The list is separated by the separator string declared using the
+-S switch (e.g. -S "; ", -S "-"). If ommited, as in the example, the default
+separator is ",".
