@@ -377,7 +377,7 @@ int main(int argc, char** argv) {
 
 
 static void printHelp() {
-    printf("\nWeather Station Reader v0.1\n");
+    printf("\nWeather Station Reader v0.11\n");
     printf("Reads and reports data from the WH1081 Fine Offset usb weather station\n");
     printf("(C) 2010 Jim Whurr\n\n");
     printf("[Based on the original wwsr utility V0.1, (C) Michael Pendec 2007, and \n");
