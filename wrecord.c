@@ -104,14 +104,14 @@ weatherRecordPtr rreadl(weatherRecordPtr record, long location) {
     record->memPos	= location;
     record->interval	= record->rawdata[0] & 0xFF;
     record->humIn	= record->rawdata[1] & 0xFF;
-    record->tempIn	= todouble(getSignedInt(record->rawdata + 0x02));
+    record->tempIn	= todouble(getSignedInt((char *)(record->rawdata + 0x02)));
     record->humOut	= record->rawdata[4] & 0xFF;
-    record->tempOut	= todouble(getSignedInt(record->rawdata + 0x05));
-    record->press	= todouble(getUnsignedInt(record->rawdata + 0x07));
+    record->tempOut	= todouble(getSignedInt((char *)(record->rawdata + 0x05)));
+    record->press	= todouble(getUnsignedInt((char *)(record->rawdata + 0x07)));
     record->windSpeed	= todouble((record->rawdata[9] & 0xFF));	// metres/sec
-    record->gustSpeed	= todouble(getUnsignedInt(record->rawdata + 0x0A));
+    record->gustSpeed	= todouble(getUnsignedInt((char *)(record->rawdata + 0x0A)));
     record->windDir	= record->rawdata[12] & 0xFF;
-    record->rainCounter	= todouble(getUnsignedInt(record->rawdata + 0x0D));
+    record->rainCounter	= todouble(getUnsignedInt((char *)(record->rawdata + 0x0D)));
     record->errorCode	= record->rawdata[15] & 0xFF;
 
     return record;

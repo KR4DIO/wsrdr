@@ -154,12 +154,14 @@ static char * strDate(char * ptrDate) {
     return stringDate;
 }
 
+#if 0
 static char * strTime(char * ptrTime) {
     static char stringTime[6];
 
     sprintf(stringTime, "%02x:%02x", ptrTime[0], ptrTime[1]);
     return stringTime;
 }
+#endif
 
 
 
